@@ -1,0 +1,100 @@
+<div class="container-fluid">
+  <div class="row ">
+    <!-- IMAGE CONTAINER BEGIN -->
+    <div class="col-lg-6 col-md-6 d-none d-md-block infinity-image-container"></div>
+    <!-- IMAGE CONTAINER END -->
+
+    <!-- FORM CONTAINER BEGIN -->
+    <div class="col-lg-6 col-md-6 infinity-form-container">
+      <div class="col-lg-9 col-md-12 col-sm-9 col-xs-12 infinity-form">
+        <!-- Company Logo -->
+        <div class="text-center mb-3 mt-5">
+          <img src="assets/logo.png" width="150px">
+        </div>
+        <div class="text-center mb-4">
+          <h4>Login into your account</h4>
+        </div>
+        <!-- Form -->
+
+        <!-- [formGroup]="userEmails" -->
+        <form class="px-3">
+          <!-- Input Box -->
+          <div class="form-input">
+            <span><i class="fa fa-envelope"></i></span>
+
+
+            <div class="form-group" [class.has-error]="email.invalid && email.touched">
+
+              <input required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" id="email" type="text"
+                class="form-control" placeholder="Email Address" name="email" [(ngModel)]="employee.email"
+                #email="ngModel">
+              <div class="help-block" *ngIf="email.errors?.['required'] && email.touched">
+                Email is required
+              </div>
+
+
+              <div class="help-block" *ngIf="email.errors?.['pattern'] && email.touched">
+                Email is invalid
+              </div>
+
+            </div>
+          </div>
+          <div class="form-input">
+            <span><i class="fa fa-lock"></i></span>
+           
+
+           
+                          <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter password" [(ngModel)]="account.password" #password="ngModel"
+                            minlength="5" maxlength="50" required>
+
+                            <ng9-password-strength-bar
+                            [passwordToCheck]="account.password"
+                            [barLabel]="barLabel"
+                            [barColors]="myColors"
+                            [baseColor]="baseColor"
+                            [strengthLabels]="strengthLabels"
+                            [customThresholds]="thresholds"
+                            (onStrengthChanged)="strengthChanged($event)">
+                          </ng9-password-strength-bar>
+                          
+            <div class="row mb-3">
+              <!-- Remember Checkbox -->
+              <div class="col-auto d-flex align-items-center">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="cb1">
+                  <label class="custom-control-label text-white" for="cb1">Remember me</label>
+                </div>
+              </div>
+            </div>
+            <!-- Login Button -->
+            <div class="mb-3">
+              <button type="submit" class="btn btn-block" (click)="openModal()" [routerLink]="['/dashboard']">Login</button>
+            </div>
+            <div class="text-right ">
+              <a href="reset.html" class="forget-link" class="no-underline" [routerLink]="['/forgot-password']"><strong>
+                  Forgot
+                  Password?</strong></a>
+            </div>
+            <!-- <div class="text-center mb-2">
+             <div class="text-center mb-2 text-white">or login with</div> -->
+
+            <!-- Facebook Button -->
+            <!-- <a href="" class="btn btn-social btn-facebook">facebook</a> -->
+
+            <!-- Google Button -->
+            <!-- <a href="" class="btn btn-social btn-google">google</a> -->
+
+            <!-- Twitter Button -->
+            <!-- <a href="" class="btn btn-social btn-twitter">twitter</a>
+          </div>
+          <div class="text-center mb-5 text-white">Don't have an account? 
+            <a class="register-link" href="register.html">Register here</a>
+           </div> -->
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- FORM CONTAINER END -->
+  </div>
+</div>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--
+* CoreUI - Angular 15.2 Free Admin Template
+* @version v4.3.10
+* @link https://coreui.io/angular/
+* Copyright (c) 2017-2023 creativeLabs Łukasz Holeczek
+* License: MIT
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="./">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+  <meta content="CoreUI Free Angular Admin Template" name="description" />
+  <meta content="Łukasz Holeczek" name="author" />
+  <meta
+    content="CoreUI,Bootstrap,Admin,Template,Free,Angular,Dashboard,Typescript"
+    name="keyword"
+  />
+  <link href="assets/favicon.ico" rel="icon" type="image/x-icon">
+
+ <!-- Profile View Page -->
+
+  <!-- //<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script> -->
+  <!-- <script type="text/javascript"></script> -->
+
+  <link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Date Time Picker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha256-TMneiDvJSDM9XpKs3EaPZgeF+hvJIt1p+7q3zBoB0f8=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha256-j5o/KM5c5Gjr4OvtyNIHthU/AFuU6arhW8SvUkNl9e4=" crossorigin="anonymous"></script>
+
+
+
+  <script type="text/javascript">
+    function PasswordReset() {
+      $('form.reset-password-form').on('submit', function(e) {
+        e.preventDefault();
+        $('.reset-form')
+        .removeClass('d-block')
+        .addClass('d-none');
+        $('.reset-confirmation').addClass('d-block');
+      });
+    }
+  
+    window.addEventListener('load', function() {
+      PasswordReset();
+    });
+  </script>
+  
+
+
+
+  <script>
+    const indicator = document.querySelector(".indicator");
+    const input = document.querySelector("input");
+    const weak = document.querySelector(".weak");
+    const medium = document.querySelector(".medium");
+    const strong = document.querySelector(".strong");
+    const text = document.querySelector(".text");
+    const showBtn = document.querySelector(".showBtn");
+    let regExpWeak = /[a-z]/;
+    let regExpMedium = /\d+/;
+    let regExpStrong = /.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/;
+    function trigger(){
+      if(input.value != ""){
+        indicator.style.display = "block";
+        indicator.style.display = "flex";
+        if(input.value.length <= 3 && (input.value.match(regExpWeak) || input.value.match(regExpMedium) || input.value.match(regExpStrong)))no=1;
+        if(input.value.length >= 6 && ((input.value.match(regExpWeak) && input.value.match(regExpMedium)) || (input.value.match(regExpMedium) && input.value.match(regExpStrong)) || (input.value.match(regExpWeak) && input.value.match(regExpStrong))))no=2;
+        if(input.value.length >= 6 && input.value.match(regExpWeak) && input.value.match(regExpMedium) && input.value.match(regExpStrong))no=3;
+        if(no==1){
+          weak.classList.add("active");
+          text.style.display = "block";
+          text.textContent = "Your password is too week";
+          text.classList.add("weak");
+        }
+        if(no==2){
+          medium.classList.add("active");
+          text.textContent = "Your password is medium";
+          text.classList.add("medium");
+        }else{
+          medium.classList.remove("active");
+          text.classList.remove("medium");
+        }
+        if(no==3){
+          weak.classList.add("active");
+          medium.classList.add("active");
+          strong.classList.add("active");
+          text.textContent = "Your password is strong";
+          text.classList.add("strong");
+        }else{
+          strong.classList.remove("active");
+          text.classList.remove("strong");
+        }
+        showBtn.style.display = "block";
+        showBtn.onclick = function(){
+          if(input.type == "password"){
+            input.type = "text";
+            showBtn.textContent = "HIDE";
+            showBtn.style.color = "#23ad5c";
+          }else{
+            input.type = "password";
+            showBtn.textContent = "SHOW";
+            showBtn.style.color = "#000";
+          }
+        }
+      }else{
+        indicator.style.display = "none";
+        text.style.display = "none";
+        showBtn.style.display = "none";
+      }
+    }
+ </script>
+
+
+
+  <title>CoreUI Free Angular Admin Template</title>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <app-root>
+
+    <!-- <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <label>Email</label>
+          <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+      </div> -->
+    <div class="fade show" style="text-align: center; padding-top: calc(100vh / 2); height: 100vh">
+      <i class="spinner-grow spinner-grow-sm"></i>
+      <span class="m-1">Loading...</span>
+    </div>
+  </app-root>
+</body>
+</html>

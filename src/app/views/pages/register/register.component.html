@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- IMAGE CONTAINER BEGIN -->
+    <div class="col-lg-6 col-md-6 d-none d-md-block infinity-image-container"></div>
+    <!-- IMAGE CONTAINER END -->
+
+
+    <!-- FORM CONTAINER BEGIN -->
+    <div class="col-lg-6 col-md-6 infinity-form-container">
+      <div class="col-lg-8 col-md-12 col-sm-8 col-xs-12 infinity-form">
+        <div class="text-center mb-3 mt-5">
+          <img src="assets/logo.png" width="150px">
+        </div>
+        <div class="reset-form d-block">
+          <form class="reset-password-form px-3">
+            <h4 class="mb-3">Reset Your password</h4>
+            <p class="mb-3 text-white">
+              Please enter your email address and we will send you a password reset link.
+            </p>
+        
+            <div class="form-input">
+              <span><i class="fa fa-envelope"></i></span>
+              <!-- <input type="email" name="" placeholder="Email Address" tabindex="10"required> -->
+              <div class="form-group" [class.has-error]="email.invalid && email.touched">
+                <!-- <label for="email" class="control-label">Email</label> -->
+                <input required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" id="email" type="text"
+                  class="form-control" placeholder="Email Address" name="email" [(ngModel)]="employee.email" #email="ngModel">
+                  <div class="help-block" *ngIf="email.errors?.['required'] && email.touched">
+                    Email is required
+                  </div>
+                </div>
+                 <div class="help-block" *ngIf="email.errors?.['pattern'] && email.touched">
+                  Email is invalid 
+                 </div>
+            </div>
+            <div class="mb-3"> 
+              <button type="submit" class="btn">Send Reset Link</button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="reset-confirmation d-none px-3">
+           <div class="mb-4">
+             <h4 class="mb-3">Link was sent</h4>
+             <h6 class="text-white">Please, check your inbox for a password reset link.</h6>
+           </div>
+        
+          <a href="login.html">
+            <button type="submit" class="btn">Login Now</button>
+           </a>
+         <div>
+      </div>
+    </div>
+    <!-- FORM CONTAINER END -->
+  </div>
+</div>
